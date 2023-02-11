@@ -1,0 +1,102 @@
+body { background: #1f1f1f; font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;}
+section { display: flex; flex-wrap: wrap; gap: 1em; padding: 1em 2em 2em; perspective: 500px; }
+main { margin-top: 2em; }
+h1, h2 { color: white; text-align: center; }
+button, a { transition: transform 1s; background: transparent; padding: 1em 3em; text-transform: uppercase; font-size: 18px; border: 1px solid turquoise; color: white; border-radius: 5px; }
+a { text-decoration: none; position: relative; overflow: hidden; }
+
+/* Properties can generally be animated if they are expressed by a color or by a number */
+
+/* Only target two properties, not all */
+.transition { transition: background-color 1s ease-in-out 1s, color 0.5s ease 0.5s; }
+.transition:hover { background-color: teal; color: #1f1f1f; }
+
+.squeeze:hover { transform: scaleY(2) scaleX(0.5); }
+
+.skew:hover { transform: skew(5deg,10deg); }
+
+/* Origin is the anchor point for the animation, works with x/y values */
+.origin:hover { transform-origin: 100px 20%; transform: rotate(45deg); }
+
+/* Will move the element towards the user, requires perspective on parent */
+.translate-3d:hover { transform: translateZ(20px); }
+
+/* Do a flip! */
+.rotate-3d:hover { transform: rotateY(-150deg); }
+
+.bg-rotate::before { content: ""; position: absolute; left: 0; top: 0; z-index: -1; background: teal; height: 100%; width: 100%; transform-origin: bottom left; transform: rotate(-90deg) scale(1.3); transition: transform 1s; }
+.bg-rotate:hover::before { transform: rotate(0deg); }
+
+.swipe::before { content: ""; position: absolute; left: 0; top: 0; z-index: -1; background: teal; height: 100%; width: 100%; transform: translate(100%); transition: transform 1s; }
+.swipe:hover::before { transform: translate(0); }
+
+.open::before,
+.open::after { content: ""; position: absolute; left: 0; top: 0; z-index: -1; background: teal; height: 100%; width: 100%; transition: transform 1s; }
+.open::before { transform: rotateX(-90deg); }
+.open::after { transform: rotateY(-90deg); }
+
+.open:hover::before { transform: rotateX(0deg); }
+.open:hover::after { transform: rotateY(0deg); }
+
+.bigger { transition: all 0.5s; }
+.bigger:hover { font-weight: 700; letter-spacing: 5px; border-width: 3px; }
+
+.message::before { content: "Hello"; display: flex; justify-content: center; align-items: center; position: absolute; left: 0; top: 0; background: teal; height: 100%; width: 100%; transform: translateY(-100%); transition: transform 1s; }
+.message:hover::before { transform: translateY(0); }
+
+.stripe { transition: all 1s; }
+.stripe::before { content: ""; position: absolute; left: 0; top: 0; z-index: -1; background: teal; height: 20px; width: 100%; transform: translateX(-100%) rotate(45deg); transition: transform 1s; }
+.stripe:hover { background: rgba(64, 224, 208, 0.5); }
+.stripe:hover::before { transform: translateX(100%) rotate(45deg); }
+
+.checker { transition: all 1s; }
+.checker::before,
+.checker::after { display: flex; justify-content: center; align-items: center; position: absolute; left: 0; top: 0; background: teal; height: 100%; width: 100%; transition: all 1s; }
+.checker::before { content: "CHECKER"; }
+.checker::after { content: "CHECKER"; transform: translate(-100%, 100%); }
+.checker:hover::before { transform: translate(100%, -100%); }
+.checker:hover::after { transform: translate(0); }
+
+.zoom::before { content: "Zoom"; display: flex; justify-content: center; align-items: center; position: absolute; left: 0; top: 0; background: teal; height: 100%; width: 100%; transition: all 1s; transform: scale(5); opacity: 0; }
+.zoom:hover::before { transform: scale(1); opacity: 1; }
+
+.round-swipe::before { content: ""; position: absolute; left: 0; top: 0; z-index: -1; background: teal; height: 0%; width: 100%; border-radius: 0 0 50% 50%; transition: all 1s; }
+.round-swipe:hover::before { height: 200%; }
+
+/* Chaining pseudo elements with animation delay */
+.flip { overflow: visible; }
+.flip::before,
+.flip::after { border-radius: 5px; display: flex; justify-content: center; align-items: center; position: absolute; left: 0; top: 0; height: 100%; width: 100%; transition: all 1s; transform-origin: top; transform: rotateX(270deg); }
+.flip::before { content: "Flip Two"; background: cornflowerblue; }
+.flip::after { content: "Flip Three"; background: darkslateblue; transition-delay: 0.5s; }
+.flip:hover::before,
+.flip:hover::after { transform: rotateX(0); }
+
+
+
+
+
+
+
+
+
+
+/* Images */
+
+.scale-rotate { height: 250px; width: 250px; position: relative; overflow: hidden; }
+.scale-rotate img { width: 100%; height: 100%; transition: all 0.5s; }
+.scale-rotate .caption { color: white; position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; text-transform: uppercase; opacity: 0; transition: all 0.5s; background: rgba(0, 0, 0, 0); }
+.scale-rotate:hover .caption { opacity: 1; background: rgba(0, 128, 128, 0.7); }
+.scale-rotate:hover img { transform: scale(1.3) rotate(15deg); }
+
+.translate-slide { height: 250px; width: 250px; position: relative; overflow: hidden; }
+.translate-slide img { width: 100%; height: 100%; transition: all 0.5s; }
+.translate-slide .caption { color: white; position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; text-transform: uppercase; opacity: 0; transition: all 0.5s; background: rgba(0, 0, 0, 0); transform: translateX(-100%); }
+.translate-slide:hover .caption { opacity: 1; background: rgba(0, 128, 128, 0.7); transform: translateX(0); }
+.translate-slide:hover img { transform: scale(1.3); }
+
+.translate-swipe { height: 250px; width: 250px; position: relative; overflow: hidden; }
+.translate-swipe img { width: 100%; height: 100%; transition: all 0.5s; }
+.translate-swipe .caption { color: white; position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; text-transform: uppercase; opacity: 0; transition: all 0.5s; background: rgba(0, 0, 0, 0); transform: translateX(-100%); }
+.translate-swipe:hover .caption { opacity: 1; background: rgba(0, 128, 128, 0.7); transform: translateX(0); }
+.translate-swipe:hover img { transform: translate(100%); }
