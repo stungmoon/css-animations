@@ -2,8 +2,9 @@ body { background: #1f1f1f; font-family: Verdana, Geneva, Tahoma, sans-serif, sa
 section { display: flex; flex-wrap: wrap; gap: 1em; padding: 1em 2em 2em; perspective: 500px; }
 main { margin-top: 2em; }
 h1, h2 { color: white; text-align: center; }
-button, a { transition: transform 1s; background: transparent; padding: 1em 3em; text-transform: uppercase; font-size: 18px; border: 1px solid turquoise; color: white; border-radius: 5px; }
+button, a { transition: all 1s; background: transparent; padding: 1em 3em; font-size: 18px; border: 1px solid turquoise; color: white; border-radius: 5px; }
 a { text-decoration: none; position: relative; overflow: hidden; }
+.full-width { flex-basis: 100%; display: flex; justify-content: center; }
 
 /* Properties can generally be animated if they are expressed by a color or by a number */
 
@@ -16,7 +17,7 @@ a { text-decoration: none; position: relative; overflow: hidden; }
 .skew:hover { transform: skew(5deg,10deg); }
 
 /* Origin is the anchor point for the animation, works with x/y values */
-.origin:hover { transform-origin: 100px 20%; transform: rotate(45deg); }
+.origin:hover { transform-origin: top right; transform: rotate(-30deg); }
 
 /* Will move the element towards the user, requires perspective on parent */
 .translate-3d:hover { transform: translateZ(20px); }
@@ -44,16 +45,14 @@ a { text-decoration: none; position: relative; overflow: hidden; }
 .message::before { content: "Hello"; display: flex; justify-content: center; align-items: center; position: absolute; left: 0; top: 0; background: teal; height: 100%; width: 100%; transform: translateY(-100%); transition: transform 1s; }
 .message:hover::before { transform: translateY(0); }
 
-.stripe { transition: all 1s; }
-.stripe::before { content: ""; position: absolute; left: 0; top: 0; z-index: -1; background: teal; height: 20px; width: 100%; transform: translateX(-100%) rotate(45deg); transition: transform 1s; }
-.stripe:hover { background: rgba(64, 224, 208, 0.5); }
+.stripe::before { content: ""; position: absolute; left: 0; top: 0; z-index: -1; background: teal; height: 40px; width: 100%; transform: translateX(-100%) rotate(45deg); transition: transform 1s; }
+.stripe:hover { background: teal; }
 .stripe:hover::before { transform: translateX(100%) rotate(45deg); }
 
-.checker { transition: all 1s; }
 .checker::before,
 .checker::after { display: flex; justify-content: center; align-items: center; position: absolute; left: 0; top: 0; background: teal; height: 100%; width: 100%; transition: all 1s; }
-.checker::before { content: "CHECKER"; }
-.checker::after { content: "CHECKER"; transform: translate(-100%, 100%); }
+.checker::before { content: "Checker"; }
+.checker::after { content: "Checker"; transform: translate(-100%, 100%); }
 .checker:hover::before { transform: translate(100%, -100%); }
 .checker:hover::after { transform: translate(0); }
 
@@ -72,11 +71,57 @@ a { text-decoration: none; position: relative; overflow: hidden; }
 .flip:hover::before,
 .flip:hover::after { transform: rotateX(0); }
 
+.swap { overflow: visible; background: transparent; color: transparent; }
+.swap::before,
+.swap::after { display: flex; justify-content: center; align-items: center; position: absolute; top: 0; background: teal; height: 100%; width: 100%; transition: all 1s; border-radius: 5px; color: white; }
+.swap::before { content: "Right"; left: 0; }
+.swap::after { content: "Left"; left: -100%; opacity: 0; transform: scale(0) rotateY(0deg); }
+.swap:hover::before { left: 100%; transform: scale(0) rotateY(360deg); opacity: 0; }
+.swap:hover::after { left: 0; transform: scale(1) rotateY(360deg); opacity: 1; }
+
+.circles { border: none; overflow: visible; border-radius: 5px; }
+.circles::before,
+.circles::after { content: ""; position: absolute; top: 50%; background: teal; height: 20px; width: 20px; transition: all 0.3s; border-radius: 50%; transform: translateY(-50%); z-index: -1; }
+.circles::before { left: 0; box-shadow: -100px 0 0 teal; transform: translate(-50%, -50%); }
+.circles::after { right: 0; box-shadow: 100px 0 0 teal; transform: translate(50%, -50%); z-index: -1; }
+.circles span { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: teal; border-radius: 5px; transform: scale(0); transition: all 0.3s; z-index: -1; }
+.circles:hover::before { left: 50%; box-shadow: 30px 0 0 teal; opacity: 1; }
+.circles:hover::after { right: 50%; box-shadow: -30px 0 0 teal; opacity: 1; }
+.circles:hover span { transform: scale(1); transition-delay: 0.4s; }
+
+.shadows { overflow: visible; border: none; }
+.shadows::before,
+.shadows::after { content: ""; position: absolute; height: 100%; width: 100%; transition: all 1s; z-index: -1; mix-blend-mode: multiply; }
+.shadows::before { background: cornflowerblue; left: -3px; top: -3px; transform-origin: top; }
+.shadows::after { background: darkslateblue; left: 3px; top: 3px; transform-origin: bottom; }
+.shadows:hover::before { top: -6px; left: 0; transform: perspective(1000px) rotateX(80deg); transition: all 0.2s; }
+.shadows:hover::after { top: 6px; left: 0; transform: perspective(1000px) rotateX(-80deg); transition: all 0.2s; }
+
+.mosaic::before,
+.mosaic::after,
+.mosaic span::before,
+.mosaic span::after { content: ""; position: absolute; height: 100%; width: 25%; transition: all 0.5s; z-index: -1; background: teal; transition: all 0.3s; }
+.mosaic::before { left: -25%; top: 0; }
+.mosaic::after { top: -100%; left: 25%; }
+.mosaic:hover::before { top: 0; left: 0; }
+.mosaic:hover::after { top: 0; left: 25%; }
+.mosaic span::before { top: 100%; right: 25%; }
+.mosaic span::after { top: 0; right: -25%; }
+.mosaic:hover span::before { top: 0; right: 25%; }
+.mosaic:hover span::after { top: 0; right: 0; }
 
 
 
+/* Wave image is 22x118px */
 
+.inner-wave { position: absolute; top: calc(100% + 22px); left: 0; width: 100%; height: 100%; background: #00aeff; z-index: -1; transition: all 2s; }
+.inner-wave::before { content: ""; position: absolute; left: 0; top: -22px; background: url('./images/wave.png'); height: 22px; width: 100%; animation: wave 0.5s linear infinite; }
+.wave:hover .inner-wave { top: 0; }
 
+@keyframes wave {
+    0% { background-position-x: 0; }
+    100% { background-position-x: 118px; }
+}
 
 
 
