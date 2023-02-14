@@ -1,12 +1,28 @@
-body { background: #1f1f1f; font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;}
-section { display: flex; flex-wrap: wrap; gap: 2em; padding: 1em 2em 2em; perspective: 500px; }
+body { background: #1f1f1f; font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif; overflow-x: hidden; }
+section { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 2em; padding: 1em 2em 2em; perspective: 500px; }
 main { margin-top: 2em; }
+
 h1, h2 { color: white; text-align: center; }
 button, a { transition: all 1s; background: transparent; padding: 1em 3em; font-size: 18px; border: 1px solid turquoise; color: white; border-radius: 5px; }
 a { text-decoration: none; position: relative; overflow: hidden; }
+ul { display: flex; flex-wrap: wrap; margin: 0; padding: 0; }
+ul li { list-style: none; }
+ul li a { padding: 0.5em 1em; }
+ul:not(:last-child) { margin-bottom: 20px; }
+ul li:not(:last-child) { margin-right: 20px; }
+
 .half-width { flex-basis: 50%; display: flex; justify-content: center; }
-[class*="image-effect"] { height: 250px; width: 250px; position: relative; overflow: hidden; }
+.white-bg { max-width: none; width: 100%; display: block; background: white; }
+.white-bg h2,
+.white-bg p,
+.white-bg a { color: #1f1f1f; }
+
+[class*="image-effect"] { height: 280px; width: 280px; position: relative; overflow: hidden; }
+[class*="image-effect"] .caption h3,
+[class*="image-effect"] .caption p, 
+[class*="image-effect"] .caption a { color: white; }
 [class*="image-effect"] img { width: 100%; height: 100%; transition: all 0.5s; }
+[class*="card-effect"] { width: 280px; position: relative; overflow: hidden; }
 
 /* Properties can generally be animated if they are expressed by a color or by a number */
 
@@ -70,8 +86,8 @@ a { text-decoration: none; position: relative; overflow: hidden; }
 .flip { overflow: visible; }
 .flip::before,
 .flip::after { border-radius: 5px; display: flex; justify-content: center; align-items: center; position: absolute; left: 0; top: 0; height: 100%; width: 100%; transition: all 1s; transform-origin: top; transform: rotateX(270deg); }
-.flip::before { content: "Flip Two"; background: cornflowerblue; }
-.flip::after { content: "Flip Three"; background: darkslateblue; transition-delay: 0.5s; }
+.flip::before { content: "Flip Two"; background: teal; }
+.flip::after { content: "Flip Three"; background: coral; transition-delay: 0.5s; }
 .flip:hover::before,
 .flip:hover::after { transform: rotateX(0); }
 
@@ -96,8 +112,8 @@ a { text-decoration: none; position: relative; overflow: hidden; }
 .shadows { overflow: visible; border: none; }
 .shadows::before,
 .shadows::after { content: ""; position: absolute; height: 100%; width: 100%; transition: all 1s; z-index: -1; mix-blend-mode: multiply; }
-.shadows::before { background: cornflowerblue; left: -3px; top: -3px; transform-origin: top; }
-.shadows::after { background: darkslateblue; left: 3px; top: 3px; transform-origin: bottom; }
+.shadows::before { background: teal; left: -3px; top: -3px; transform-origin: top; }
+.shadows::after { background: coral; left: 3px; top: 3px; transform-origin: bottom; }
 .shadows:hover::before { top: -6px; left: 0; transform: perspective(1000px) rotateX(80deg); transition: all 0.2s; }
 .shadows:hover::after { top: 6px; left: 0; transform: perspective(1000px) rotateX(-80deg); transition: all 0.2s; }
 
@@ -174,8 +190,8 @@ a { text-decoration: none; position: relative; overflow: hidden; }
 .skewed { overflow: visible; border: none; }
 .skewed::before,
 .skewed::after { content: ""; position: absolute; height: 100%; width: 50%; z-index: -1; transform: skewX(30deg); transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
-.skewed::before { left: -1%; top: -5px; background: cornflowerblue; }
-.skewed::after { left: 52%; top: 5px; background: darkslateblue; }
+.skewed::before { left: -1%; top: -5px; background: teal; }
+.skewed::after { left: 52%; top: 5px; background: coral; }
 .skewed:hover::before { transform: skewX(0deg); top: 0; left: 50%; }
 .skewed:hover::after { transform: skewX(0deg); top: 0; left: 0; }
 
@@ -194,26 +210,155 @@ a { text-decoration: none; position: relative; overflow: hidden; }
 
 /* IMAGES */
 
-.image-effect-1 .caption { color: white; position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; text-transform: uppercase; opacity: 0; transition: all 0.5s; background: rgba(0, 0, 0, 0); }
+.image-effect-1 .caption { position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; text-transform: uppercase; opacity: 0; transition: all 0.5s; background: rgba(0, 0, 0, 0); }
 .image-effect-1:hover .caption { opacity: 1; background: rgba(0, 128, 128, 0.7); }
 .image-effect-1:hover img { transform: scale(1.3) rotate(15deg); }
 
-.image-effect-2 .caption { color: white; position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; text-transform: uppercase; opacity: 0; transition: all 0.5s; background: rgba(0, 0, 0, 0); transform: translateX(-100%); }
+.image-effect-2 .caption { position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; text-transform: uppercase; opacity: 0; transition: all 0.5s; background: rgba(0, 0, 0, 0); transform: translateX(-100%); }
 .image-effect-2:hover .caption { opacity: 1; background: rgba(0, 128, 128, 0.7); transform: translateX(0); }
 .image-effect-2:hover img { transform: scale(1.3); }
 
-.image-effect-3 .caption { color: white; position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; text-transform: uppercase; opacity: 0; transition: all 0.5s; background: rgba(0, 0, 0, 0); transform: translateX(-100%); }
+.image-effect-3 .caption { position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; text-transform: uppercase; opacity: 0; transition: all 0.5s; background: rgba(0, 0, 0, 0); transform: translateX(-100%); }
 .image-effect-3:hover .caption { opacity: 1; background: rgba(0, 128, 128, 0.7); transform: translateX(0); }
 .image-effect-3:hover img { transform: translate(100%); }
 
-.image-effect-4 .caption { color: white; position: absolute; bottom: 0; left: 0; height: 30%; width: 100%; display: flex; justify-content: center; align-items: center; text-transform: uppercase; transition: all 0.5s; background: teal; transform: translateY(100%); }
+.image-effect-4 .caption { position: absolute; bottom: 0; left: 0; height: 30%; width: 100%; display: flex; justify-content: center; align-items: center; text-transform: uppercase; transition: all 0.5s; background: teal; transform: translateY(100%); }
 .image-effect-4:hover .caption { transform: translateY(0); }
 .image-effect-4:hover img { transform: translateY(-30%); }
 
 .image-effect-5::before { content: ""; background: teal; opacity: 0.5; position: absolute; top: 0; left: 0; height: 100%; width: 100%; transition: all 0.5s; transform: translateY(100%); transition-delay: 0.25s; }
-.image-effect-5 .caption { color: white; position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; text-transform: uppercase; transition: all 0.5s; transform: translateY(20px); opacity: 0; }
+.image-effect-5 .caption { position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; justify-content: center; align-items: center; text-transform: uppercase; transition: all 0.5s; transform: translateY(20px); opacity: 0; }
 .image-effect-5:hover::before { transform: translateY(0); transition-delay: 0; }
 .image-effect-5:hover .caption { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
 
-.image-effect-6 { border: 3px solid white; }
+.image-effect-6 { border: 3px solid #aaa; }
 .image-effect-6:hover img { transform: scale(2) rotate(15deg); }
+
+.image-effect-7::before { content: ""; background: teal; opacity: 0.8; position: absolute; top: 0; left: 0; height: 200%; width: 150%; transition: all 0.5s; transform: translate(550px, 300px) rotate(45deg); }
+.image-effect-7 .caption { position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: space-around; align-items: center; text-transform: uppercase; }
+.image-effect-7 h3 { text-align: center; font-size: 20px; margin-top: 20px; padding: 10px; background: rgba(31, 31, 31, 0.7); transform: translate(200px, -200px); transition: all 0.25s; width: 100%; }
+.image-effect-7 p,
+.image-effect-7 a { text-align: center; transition: all 0.25s; transform: translate(-200px, 200px); }
+.image-effect-7:hover::before { transform: translate(-50px, -150px) rotate(45deg); }
+.image-effect-7:hover h3 { transform: translate(0, 0); transition-delay: 0.2s; }
+.image-effect-7:hover p,
+.image-effect-7:hover a { transform: translate(0, 0); transition-delay: 0.4s; }
+
+.image-effect-8::before { content: ""; background: teal; opacity: 0.8; position: absolute; top: 0; left: 0; height: 200%; width: 150%; transition: all 0.5s; transform: translate(560px, -100px) rotate(100deg); }
+.image-effect-8 .caption { position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: space-around; align-items: center; text-transform: uppercase; }
+.image-effect-8 h3 { text-align: center; font-size: 20px; margin-top: 20px; padding: 10px; background: rgba(31, 31, 31, 0.7); transform: translateY(-150px); transition: all 0.25s; width: 100%; }
+.image-effect-8 p { text-align: center; transition: all 0.25s; transform: translateX(300px) rotate(90deg); transition: all 0.5s; }
+.image-effect-8 a { text-align: center; transition: all 0.25s; transform: translateY(300px); transition: all 0.5s; }
+.image-effect-8:hover::before { transform: translate(-50px, -150px) rotate(45deg); }
+.image-effect-8:hover h3 { transform: translate(0, 0); transition-delay: 0.5s; }
+.image-effect-8:hover p { transform: translateX(0) rotate(0deg); transition-delay: 0.6s; }
+.image-effect-8:hover a { transform: translateX(0); transition-delay: 0.6s; }
+
+.image-effect-9::before { content: ""; background: teal; opacity: 0.8; position: absolute; top: 0; left: 0; height: 100%; width: 100%; transition: all 0.5s; transform: scale(0) rotate(-180deg); transition-delay: 0.5s; }
+.image-effect-9 .caption { position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: space-around; align-items: center; text-transform: uppercase; }
+.image-effect-9 h3 { text-align: center; font-size: 20px; margin-top: 20px; padding: 10px; background: rgba(31, 31, 31, 0.7); opacity: 0; transition: all 0.5s; width: 100%; }
+.image-effect-9 p { text-align: center; transition: all 0.25s; transform: translateX(300px) rotate(90deg); transition: all 0.5s; opacity: 0; }
+.image-effect-9 a { text-align: center; transition: all 0.25s; transform: translateY(300px); transition: all 0.5s; opacity: 0; }
+.image-effect-9 img { transition: all 0.5s; transition-delay: 0.5s; }
+.image-effect-9:hover::before { transform: scale(1) rotate(0deg); }
+.image-effect-9:hover h3,
+.image-effect-9:hover p,
+.image-effect-9:hover a { opacity: 1; transition-delay: 1s; transform: translateX(0) rotate(0deg); }
+.image-effect-9:hover img { transform: scale(0); transition-delay: 0s; }
+
+.image-effect-10::before { content: ""; background: teal; position: absolute; top: 0; left: 0; height: 100%; width: 100%; opacity: 0; }
+.image-effect-10 .caption { position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: space-around; align-items: center; text-transform: uppercase; }
+.image-effect-10 h3 { text-align: center; font-size: 20px; margin-top: 20px; padding: 10px; background: rgba(31, 31, 31, 0.7); opacity: 0; transform: scale(5); transition: all 0.25s; width: 100%; }
+.image-effect-10 p { text-align: center; transition: all 0.25s; transition: all 0.5s; opacity: 0; transform: scale(5);  }
+.image-effect-10 a { text-align: center; transition: all 0.25s; transform: translateY(150px); transition: all 0.5s; }
+.image-effect-10:hover::before { opacity: 1; transition: all 0.5s; }
+.image-effect-10:hover h3 { opacity: 1; transform: scale(1); transition-delay: 0.4s; }
+.image-effect-10:hover p { opacity: 1; transform: scale(1); transition-delay: 0.4s; }
+.image-effect-10:hover a { transform: translateY(0); transition-delay: 0.5s; }
+
+.image-effect-11::before { content: ""; background: teal; position: absolute; top: 0; left: 0; height: 100%; width: 100%; opacity: 0; }
+.image-effect-11 .caption { position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; flex-direction: column; justify-content: space-around; align-items: center; text-transform: uppercase; }
+.image-effect-11 h3 { text-align: center; font-size: 20px; margin-top: 20px; padding: 10px; background: rgba(31, 31, 31, 0.7); opacity: 0; transform: translateY(150px); transition: all 0.25s; width: 100%; }
+.image-effect-11 p { text-align: center; transition: all 0.25s; transition: all 0.5s; opacity: 0; transform: translateY(150px);  }
+.image-effect-11 a { text-align: center; transition: all 0.25s; transform: translateY(150px); transition: all 0.5s; }
+.image-effect-11 img { transition: all 0.5s; }
+.image-effect-11:hover::before { opacity: 1; transition: all 0.5s; }
+.image-effect-11:hover h3 { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+.image-effect-11:hover p { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+.image-effect-11:hover a { transform: translateY(0); transition-delay: 0.6s; }
+.image-effect-11:hover img { transform: rotate(720deg) scale(0); opacity: 0; }
+
+/* NAVIGATIONS  */
+
+/* soon */
+
+/* CARDS */
+
+.card-effect-1 { background: white; border-radius: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.card-effect-1::before { content: ""; position: absolute; left: 0; bottom: calc(-100% + 5px); width: 100%; height: 100%; z-index: 1; transition: 0.5s; background: teal; }
+.card-effect-1 .content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+.card-effect-1 .content h3,
+.card-effect-1 .content p { transition: all 1s; }
+.card-effect-1:hover::before { bottom: 0; }
+.card-effect-1:hover h3,
+.card-effect-1:hover p,
+.card-effect-1:hover a { color: white; }
+
+.card-effect-2 { overflow: visible; background: white; border-radius: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 300px; height: 180px; transition: 0.3s; padding: 20px; margin-top: 50px; }
+.card-effect-2 .img-box { position: relative; height: 100%; width: 100%; transform: translateY(-60px); z-index: 1; }
+.card-effect-2 img { width: 100%; border-radius: 5px; }
+.card-effect-2:hover { height: 450px; }
+.card-effect-2 .content { padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; transition: 0.3s; transform: translateY(-500px); opacity: 0; }
+.card-effect-2:hover .content { opacity: 1; transform: translateY(-300px); }
+
+.card-effect-3 { overflow: visible; display: flex; position: relative; width: 500px; height: 300px; align-items: center; background: linear-gradient(0deg, rgba(0,128,128,0.3) 0%, rgba(0,128,128,0.1) 50%, rgba(255,255,255,1) 100%); border-radius: 5px; }
+.card-effect-3 img { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 250px; transition: all 0.5s; }
+.card-effect-3:hover img { left: 80%; width: 300px; }
+.card-effect-3 .content { display: flex; flex-direction: column; align-items: flex-start; position: relative; padding: 40px; width: 40%; left: 20%; transition: 0.5s; opacity: 0; }
+.card-effect-3:hover .content { opacity: 1; left: 0; }
+
+
+
+
+.smoky { justify-content: center; }
+.smoky li { font-size: 50px; color: white; font-weight: bold; letter-spacing: 10px; transition: all 2s; }
+.smoky:hover li { transform: rotate(45deg) translateY(-200px); opacity: 0; color: teal; filter: blur(20px); }
+.smoky li:nth-child(2) { transition-delay: 0.2s; }
+.smoky li:nth-child(3) { transition-delay: 0.4s; }
+.smoky li:nth-child(4) { transition-delay: 0.6s; }
+.smoky li:nth-child(5) { transition-delay: 0.8s; }
+.smoky li:nth-child(6) { transition-delay: 1.2s; }
+.smoky li:nth-child(7) { transition-delay: 1.4s; }
+.smoky li:nth-child(8) { transition-delay: 1.6s; }
+
+.fill { font-size: 50px; color: #ccc; text-transform: uppercase; position: relative; }
+.fill::before { content: "BIOPARCO"; position: absolute; top: 0; left: 0; color: teal; width: 0; overflow: hidden; transition: all 0.5s; }
+.fill:hover::before { width: 100%; }
+
+.borders-box { position: relative; margin: 100px auto; width: 320px; height: 320px; box-sizing: border-box; }
+.borders-box h1 { margin: 0; padding: 0; color: teal; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; font-size: 24px; }
+.borders-box::before {content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-top: 4px solid teal; border-bottom: 4px solid teal; box-sizing: border-box; transition: all 0.5s; transform: scaleX(0); }
+.borders-box:hover::before { transform: scaleX(1); }
+.borders-box::after {content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-left: 4px solid teal; border-right: 4px solid teal; box-sizing: border-box; transition: all 0.5s; transform: scaleY(0); }
+.borders-box:hover::after { transform: scaleY(1); transition-delay: 0.5s; }
+.borders-box span::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-top: 4px solid teal; border-bottom: 4px solid teal; box-sizing: border-box; transition: all 0.5s; transform: rotate(60deg) scaleX(0); }
+.borders-box:hover span::before { transform: rotate(60deg) scaleX(1); transition-delay: 1s; }
+.borders-box span::after { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-left: 4px solid teal; border-right: 4px solid teal; box-sizing: border-box; transition: all 0.5s; transform: rotate(60deg) scaleY(0); }
+.borders-box:hover span::after { transform: rotate(60deg) scaleY(1); transition-delay: 1.5s; }
+.borders-box span:first-child::before { transform: rotate(-60deg) scaleX(0); }
+.borders-box:hover span:first-child::before { transform: rotate(-60deg) scaleX(1); transition-delay: 2s; }
+.borders-box span:first-child::after { transform: rotate(-60deg) scaleY(0); }
+.borders-box:hover span:first-child::after { transform: rotate(-60deg) scaleY(1); transition-delay: 2.5s; }
+
+.social { display: flex; justify-content: center; text-align: center; overflow: hidden; }
+.social .icon { width: 90px; height: 90px; padding: 0; margin: 10px; border-radius: 30%; color: turquoise; position: relative; box-shadow: 0 5px 15px -5px teal; } 
+.icon i { line-height: 90px; font-size: 25px; transition: all 0.2s; }
+.icon:hover i { transform: scale(1.3); color: #1f1f1f; }
+.icon::before { content: ""; position: absolute; width: 120%; height: 120%; background: teal; left: -110%; top: 90%; transform: rotate(45deg); }
+.icon:hover::before { animation: animation 0.7s 1 forwards; }
+
+@keyframes animation {
+    0% { left: -110%; top: 90%; }
+    50% { left: 15%; top: -30%; }
+    100% { left: -10%; top: -10%; }
+}
