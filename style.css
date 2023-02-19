@@ -290,7 +290,79 @@ ul li:not(:last-child) { margin-right: 20px; }
 
 /* NAVIGATIONS  */
 
-/* soon */
+.navigation-1 li a { border: none; }
+.navigation-1 li a::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: teal; transform: scaleX(0); transition: all 0.5s; transform-origin: left; }
+.navigation-1 li a:hover::before { transform: scaleX(1); }
+.navigation-1 li a::after { content: ""; position: absolute; bottom: 0; right: 0; width: 100%; height: 2px; background: teal; transform: scaleX(0); transition: all 0.5s; transform-origin: right; }
+.navigation-1 li a:hover::after { transform: scaleX(1); }
+
+.navigation-2 li a { border: none; }
+.navigation-2 li a:hover { background: teal; }
+.navigation-2 li a::before { content: ""; position: absolute; bottom: 12px; left: 12px; width: 12px; height: 12px; border: 3px solid teal; border-width: 0 0 3px 3px; transition: all 0.5s; opacity: 0; }
+.navigation-2 li a::after { content: ""; position: absolute; top: 12px; right: 12px; width: 12px; height: 12px; border: solid teal; border-width: 3px 3px 0 0; transition: all 0.5s; opacity: 0; }
+.navigation-2 li a:hover::before { opacity: 1; bottom: -8px; left: -8px; }
+.navigation-2 li a:hover::after { opacity: 1; top: -8px; right: -8px; }
+
+.navigation-3 li a { border: none; transition: all 0.5s; }
+.navigation-3 li a span { content: ""; position: absolute; top: 0; left: 0; width: 25%; height: 100%; background: teal; z-index: -1; transform:scaleY(0); transform-origin: top; transition: all 0.5s; }
+.navigation-3 li a:hover span { transform: scaleY(1); }
+.navigation-3 li a span:nth-child(2) { left: 25%; transition-delay: 0.2s; }
+.navigation-3 li a span:nth-child(3) { left: 50%; transition-delay: 0.4s; }
+.navigation-3 li a span:nth-child(4) { left: 75%; transition-delay: 0.6s; }
+
+.navigation-4 li a { border: none; }
+.navigation-4 li a::before { content: ""; position: absolute; top: 120%; left: 0; width: 0; height: 5px; background: teal; transform: translateX(0); transition: all 0.5s; }
+.navigation-4 li a:hover::before { width: 50%; transform: translateX(100%); }
+.navigation-4 li a::after { content: ""; position: absolute; top: 120%; right: 0; width: 0; height: 5px; background: coral; transform: translateX(0); transition: all 0.5s; }
+.navigation-4 li a:hover::after { width: 50%; transform: translateX(-100%); }
+
+.navigation-5 li a { border: none; }
+.navigation-5:hover li a { filter: blur(5px); opacity: 0.2; }
+.navigation-5 li a:hover { opacity: 1; filter: blur(0); }
+.navigation-5 li a::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: teal; transform: scale(0); transition: all 0.5s; z-index: -1; }
+.navigation-5 li a:hover::before { transform: scale(1); }
+
+.navigation-6 li { position: relative; margin: 0 !important; }
+.navigation-6 li a { position: relative; display: block; border: none; overflow: hidden; height: 50px; border-radius: 0; }
+.navigation-6 li a span { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transition: all 0.5s; }
+.navigation-6 li a::before { content: ""; position: absolute; top: 0; right: 0; width: 0; height: 100%; background: teal; transition: all 0.2s; }
+.navigation-6 li a:hover::before { width: 100%; left: 0; transition-delay: 0.5s; }
+.navigation-6 li a:hover span:nth-child(1) { transform: translateY(-100%); transition-delay: 0s; }
+.navigation-6 li a:hover span:nth-child(2) { transform: translateY(-100%); transition-delay: 0s; }
+
+.navigation-7 li a { border: none; }
+.navigation-7 li a::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-top: 2px solid teal; border-bottom: 2px solid teal; opacity: 0; transform: scaleY(2); transition: all 0.5s; }
+.navigation-7 li a:hover::before { transform: scaleY(1.2); opacity: 1; }
+.navigation-7 li a::after { content: ""; position: absolute; top: 2px; right: 0; width: 100%; height: 100%; background: teal; z-index: -1; transform: scale(0); transition: all 0.5s; }
+.navigation-7 li a:hover::after { transform: scale(1); } 
+.navigation-7 li a:hover { color: #1f1f1f; } 
+
+.navigation-8 li a { border: none; border-radius: 0; }
+.navigation-8 li a:hover { color: teal; }
+.navigation-8 li a span:first-child::before { content: ""; position: absolute; top: 0; left: 0; width: 8px; height: 8px; border: solid teal; border-width: 3px 0 0 3px; transition: all 0.5s; opacity: 0; }
+.navigation-8 li a:hover span:first-child::before { opacity: 1; top: -10px; left: -10px; }
+.navigation-8 li a span:first-child::after { content: ""; position: absolute; top: 0; right: 0; width: 8px; height: 8px; border: solid teal; border-width: 3px 3px 0 0; transition: all 0.5s; opacity: 0; }
+.navigation-8 li a:hover span:first-child::after { opacity: 1; top: -10px; right: -10px; }
+.navigation-8 li a span:last-child::before { content: ""; position: absolute; bottom: 0; left: 0; width: 8px; height: 8px; border: solid teal; border-width: 0 0 3px 3px; transition: all 0.5s; opacity: 0; }
+.navigation-8 li a:hover span:last-child::before { opacity: 1; bottom: -10px; left: -10px; }
+.navigation-8 li a span:last-child::after { content: ""; position: absolute; bottom: 0; right: 0; width: 8px; height: 8px; border: solid teal; border-width: 0 3px 3px 0; transition: all 0.5s; opacity: 0; }
+.navigation-8 li a:hover span:last-child::after { opacity: 1; bottom: -10px; right: -10px; }
+
+.navigation-9 li a { border: none; border-radius: 0; }
+.navigation-9 li a::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-top: 2px solid teal; border-left: 2px solid teal; box-sizing: border-box; transform-origin: left; transition: all 0.5s; }
+.navigation-9 li a:hover::before { width: 15px; height: 15px; transform: rotate(360deg); }
+.navigation-9 li a::after { content: ""; position: absolute; bottom: 0; right: 0; width: 100%; height: 100%; border-bottom: 2px solid teal; border-right: 2px solid teal; box-sizing: border-box; transform-origin: right; transition: all 0.5s; }
+.navigation-9 li a:hover::after { width: 15px; height: 15px; transform: rotate(360deg); }
+.navigation-9 li a:hover { color: teal; } 
+
+.navigation-10 { width: 100%; flex-direction: column; align-items: center; }
+.navigation-10 li { margin-right: 0 !important; }
+.navigation-10 li a { overflow: visible; height: 150px; margin: 0; padding: 0; position: relative; display: block; color: transparent; -webkit-text-stroke: 1px white; font-size: 80px; font-weight: 900; border: none; }
+.navigation-10 li a::before,
+.navigation-10 li a::after { content: attr(data-text); position: absolute; top: 0; left: 0; transition: 0.5s; }
+.navigation-10 li a:hover::before { color: teal; z-index: 1; -webkit-text-stroke: 1px #1f1f1f; transform: translate(10px, -10px); }
+.navigation-10 li a:hover::after { color: turquoise; z-index: 2; -webkit-text-stroke: 1px #1f1f1f; transform: translate(20px, -20px); }
+.navigation-10 li a:hover { color: white; -webkit-text-stroke: 1px #1f1f1f; transition: 0.5s; }
 
 /* CARDS */
 
@@ -357,8 +429,6 @@ ul li:not(:last-child) { margin-right: 20px; }
 .card-effect-7 .img-box { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transition: 0.5s; } 
 .card-effect-7 img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
 .card-effect-7:hover img { opacity: 0; }
-
-
 
 .smoky { justify-content: center; }
 .smoky li { font-size: 50px; color: white; font-weight: bold; letter-spacing: 10px; transition: all 2s; }
