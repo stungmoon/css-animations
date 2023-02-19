@@ -23,6 +23,8 @@ ul li:not(:last-child) { margin-right: 20px; }
 [class*="image-effect"] .caption a { color: white; }
 [class*="image-effect"] img { width: 100%; height: 100%; transition: all 0.5s; }
 [class*="card-effect"] { width: 280px; position: relative; overflow: hidden; }
+.clip-path img { height: 150px; width: 150px; }
+.clip-path div { display: flex; justify-content: center; align-items: center; flex-basis: 50%; }
 
 /* Properties can generally be animated if they are expressed by a color or by a number */
 
@@ -87,7 +89,7 @@ ul li:not(:last-child) { margin-right: 20px; }
 .flip::before,
 .flip::after { border-radius: 5px; display: flex; justify-content: center; align-items: center; position: absolute; left: 0; top: 0; height: 100%; width: 100%; transition: all 1s; transform-origin: top; transform: rotateX(270deg); }
 .flip::before { content: "Flip Two"; background: teal; }
-.flip::after { content: "Flip Three"; background: coral; transition-delay: 0.5s; }
+.flip::after { content: "Flip Three"; background: turquoise; transition-delay: 0.5s; }
 .flip:hover::before,
 .flip:hover::after { transform: rotateX(0); }
 
@@ -113,7 +115,7 @@ ul li:not(:last-child) { margin-right: 20px; }
 .shadows::before,
 .shadows::after { content: ""; position: absolute; height: 100%; width: 100%; transition: all 1s; z-index: -1; mix-blend-mode: multiply; }
 .shadows::before { background: teal; left: -3px; top: -3px; transform-origin: top; }
-.shadows::after { background: coral; left: 3px; top: 3px; transform-origin: bottom; }
+.shadows::after { background: turquoise; left: 3px; top: 3px; transform-origin: bottom; }
 .shadows:hover::before { top: -6px; left: 0; transform: perspective(1000px) rotateX(80deg); transition: all 0.2s; }
 .shadows:hover::after { top: 6px; left: 0; transform: perspective(1000px) rotateX(-80deg); transition: all 0.2s; }
 
@@ -133,16 +135,16 @@ ul li:not(:last-child) { margin-right: 20px; }
 .border-grid { border: none; overflow: visible; margin: 0 10px; padding: 0; height: 60px; width: 200px; display: flex; justify-content: center; align-items: center; }
 .border-grid::before,
 .border-grid::after { content: ""; position: absolute; z-index: -1; transition: all 0.4s; }
-.border-grid::before { height: 90px; width: 200px; top: -15px; left: 0; border-left: 2px solid teal; border-right: 2px solid coral; }
-.border-grid::after { height: 60px; width: 230px; top: 0; left: -15px; border-top: 2px solid teal; border-bottom: 2px solid coral; transition-delay: 0.2s; }
+.border-grid::before { height: 90px; width: 200px; top: -15px; left: 0; border-left: 2px solid teal; border-right: 2px solid turquoise; }
+.border-grid::after { height: 60px; width: 230px; top: 0; left: -15px; border-top: 2px solid teal; border-bottom: 2px solid turquoise; transition-delay: 0.2s; }
 .border-grid:hover::before { transform: rotateY(180deg); }
 .border-grid:hover::after { transform: rotateX(180deg); }
 
-.border-grow-2 { border: none; overflow: visible; border-radius: 0; background: linear-gradient(145deg, teal 0%, coral 100%);  }
+.border-grow-2 { border: none; overflow: visible; border-radius: 0; background: linear-gradient(145deg, teal 0%, turquoise 100%);  }
 .border-grow-2::before,
 .border-grow-2::after { content: ""; position: absolute; height: 24px; width: 24px; z-index: -1; transition: all 0.25s; }
 .border-grow-2::before { top: -5px; left: -5px; border-left: 2px solid teal; border-top: 2px solid teal; }
-.border-grow-2::after { bottom: -5px; right: -5px; border-bottom: 2px solid coral; border-right: 2px solid coral; }
+.border-grow-2::after { bottom: -5px; right: -5px; border-bottom: 2px solid turquoise; border-right: 2px solid turquoise; }
 .border-grow-2:hover::before { height: calc(100% + 7px); width: calc(100% + 7px); }
 .border-grow-2:hover::after { height: calc(100% + 7px); width: calc(100% + 7px); }
 
@@ -191,7 +193,7 @@ ul li:not(:last-child) { margin-right: 20px; }
 .skewed::before,
 .skewed::after { content: ""; position: absolute; height: 100%; width: 50%; z-index: -1; transform: skewX(30deg); transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
 .skewed::before { left: -1%; top: -5px; background: teal; }
-.skewed::after { left: 52%; top: 5px; background: coral; }
+.skewed::after { left: 52%; top: 5px; background: turquoise; }
 .skewed:hover::before { transform: skewX(0deg); top: 0; left: 50%; }
 .skewed:hover::after { transform: skewX(0deg); top: 0; left: 0; }
 
@@ -313,7 +315,7 @@ ul li:not(:last-child) { margin-right: 20px; }
 .navigation-4 li a { border: none; }
 .navigation-4 li a::before { content: ""; position: absolute; top: 120%; left: 0; width: 0; height: 5px; background: teal; transform: translateX(0); transition: all 0.5s; }
 .navigation-4 li a:hover::before { width: 50%; transform: translateX(100%); }
-.navigation-4 li a::after { content: ""; position: absolute; top: 120%; right: 0; width: 0; height: 5px; background: coral; transform: translateX(0); transition: all 0.5s; }
+.navigation-4 li a::after { content: ""; position: absolute; top: 120%; right: 0; width: 0; height: 5px; background: turquoise; transform: translateX(0); transition: all 0.5s; }
 .navigation-4 li a:hover::after { width: 50%; transform: translateX(-100%); }
 
 .navigation-5 li a { border: none; }
@@ -322,6 +324,7 @@ ul li:not(:last-child) { margin-right: 20px; }
 .navigation-5 li a::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: teal; transform: scale(0); transition: all 0.5s; z-index: -1; }
 .navigation-5 li a:hover::before { transform: scale(1); }
 
+.navigation-6 { width: 100%; justify-content: center; }
 .navigation-6 li { position: relative; margin: 0 !important; }
 .navigation-6 li a { position: relative; display: block; border: none; overflow: hidden; height: 50px; border-radius: 0; }
 .navigation-6 li a span { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transition: all 0.5s; }
@@ -416,7 +419,8 @@ ul li:not(:last-child) { margin-right: 20px; }
 .card-effect-6:hover::after { transform: rotate(10deg); box-shadow: 0 2px 20px rgba(0,0,0,0.2); }
 .card-effect-6 .img-box { position: absolute; top: 10px; right: 10px; left: 10px; bottom: 10px; background: teal; transition: 0.5s; }
 .card-effect-6:hover .img-box { bottom: 80px; }
-.card-effect-6 .content { position: absolute; left: 10px; right: 10px; bottom: 10px; height: 60px; text-align: center; }
+.card-effect-6 .content { position: absolute; left: 10px; right: 10px; bottom: 25px; height: 60px; text-align: center; opacity: 0; }
+.card-effect-6:hover .content { opacity: 1; }
 .card-effect-6 .content h2 { margin: 0; padding: 0; color: #ccc; font-size: 20px; }
 .card-effect-6 .content span { margin: 0; padding: 0; color: black; font-size: 15px; }
 .card-effect-6 img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -471,4 +475,34 @@ ul li:not(:last-child) { margin-right: 20px; }
     0% { left: -110%; top: 90%; }
     50% { left: 15%; top: -30%; }
     100% { left: -10%; top: -10%; }
+}
+
+/* Clip paths */
+.shapes { width: 100%; }
+.triangle-1 { clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+.triangle-2 { clip-path: polygon(0% 0%, 100% 0%, 50% 100%); }
+.triangle-3 { clip-path: polygon(0% 0%, 0% 100%, 100% 50%); }
+.triangle-4 { clip-path: polygon(100% 0%, 100% 100%, 0% 50%); }
+
+.loading { overflow: hidden; position: relative; width: 400px; height: 60px; text-align: center; border: 2px solid turquoise; border-radius: 10px; }
+.loading span { text-transform: uppercase; position: absolute; top: 0; left: 0; width: 100%; height: 100%; font-size: 48px; }
+.loading span:first-child { color: teal; clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%); animation: split 4s linear infinite; }
+.loading span:last-child { color: turquoise; clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);  animation: split 4s linear infinite reverse; }
+
+@keyframes split {
+    0% { transform: translateX(100%); }
+    40% { transform: translateX(0); }
+    60% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+.waveclip { position: relative; width: 300px; height: 100px; }
+.waveclip h2 { position: absolute; text-align: center; line-height: 100px; font-size: 120px; text-transform: uppercase; }
+.waveclip h2:nth-child(1) { color: transparent; -webkit-text-stroke: 1px teal; }
+.waveclip h2:nth-child(2) { color: turquoise; clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%); animation: waveclip 2s ease-in-out infinite; }
+
+@keyframes waveclip {
+    0% { clip-path: polygon(0% 33%, 9% 27%, 18% 24%, 30% 24%, 38% 32%, 45% 41%, 49% 46%, 56% 52%, 64% 50%, 71% 45%, 76% 39%, 82% 33%, 89% 29%, 93% 24%, 99% 22%, 99% 99%, 0% 99%); }
+    50% { clip-path: polygon(0 54%, 8% 45%, 18% 38%, 28% 41%, 38% 32%, 45% 28%, 49% 22%, 56% 28%, 64% 34%, 71% 45%, 75% 55%, 80% 47%, 88% 44%, 93% 43%, 99% 49%, 99% 99%, 0% 99%); }
+    100% { clip-path: polygon(0% 33%, 9% 27%, 18% 24%, 30% 24%, 38% 32%, 45% 41%, 49% 46%, 56% 52%, 64% 50%, 71% 45%, 76% 39%, 82% 33%, 89% 29%, 93% 24%, 99% 22%, 99% 99%, 0% 99%); }
 }
