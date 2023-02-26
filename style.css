@@ -504,10 +504,10 @@ ul li:not(:last-child) { margin-right: 20px; }
 
 .social { display: flex; justify-content: center; text-align: center; overflow: hidden; }
 .social .icon { width: 90px; height: 90px; padding: 0; margin: 10px; border-radius: 30%; color: turquoise; position: relative; box-shadow: 0 5px 15px -5px teal; } 
-.icon i { line-height: 90px; font-size: 25px; transition: all 0.2s; }
-.icon:hover i { transform: scale(1.3); color: #1f1f1f; }
-.icon::before { content: ""; position: absolute; width: 120%; height: 120%; background: teal; left: -110%; top: 90%; transform: rotate(45deg); }
-.icon:hover::before { animation: animation 0.7s 1 forwards; }
+.social .icon i { line-height: 90px; font-size: 25px; transition: all 0.2s; }
+.social .icon:hover i { transform: scale(1.3); color: #1f1f1f; }
+.social .icon::before { content: ""; position: absolute; width: 120%; height: 120%; background: teal; left: -110%; top: 90%; transform: rotate(45deg); }
+.social .icon:hover::before { animation: animation 0.7s 1 forwards; }
 
 @keyframes animation {
     0% { left: -110%; top: 90%; }
@@ -561,7 +561,7 @@ ul li:not(:last-child) { margin-right: 20px; }
 
 /* ANIMATIONS */
 
-.animations { display: flex; flex-direction: column; align-items: center; }
+.animations { display: flex; flex-direction: column; align-items: center; perspective: 2000px; }
 
 .animations-1 h3 { color: white; text-align: center; font-size: 90px; line-height: 90px; text-shadow: 0 1px 0 teal, 0 2px 0 teal, 0 3px 0 teal, 0 4px 0 teal, 0 30px 5px rgba(0, 128, 128, 0.1); animation: float 3s linear infinite alternate; }
 
@@ -586,3 +586,137 @@ ul li:not(:last-child) { margin-right: 20px; }
     from { background-position: bottom left; }
     to { background-position: bottom right; }
 }
+
+.animations-4 { font-size: 40px; color: white; }
+.animations-4 span::before { content: "DOLOR"; color: teal; animation: changeword 5s infinite; }
+
+@keyframes changeword {
+    0% { content: "DOLOR"; }
+    50% { content: "SIT"; }
+    100% { content: "AMET"; }
+}
+
+.animations-5 li { font-size: 40px; color: #ccc; animation: lighting 2s linear infinite; }
+.animations-5 li:nth-child(1) { animation-delay: 0; }
+.animations-5 li:nth-child(2) { animation-delay: 0.1s; }
+.animations-5 li:nth-child(3) { animation-delay: 0.2s; }
+.animations-5 li:nth-child(4) { animation-delay: 0.3s; }
+.animations-5 li:nth-child(5) { animation-delay: 0.4s; }
+.animations-5 li:nth-child(6) { animation-delay: 0.5s; }
+.animations-5 li:nth-child(7) { animation-delay: 0.6s; }
+.animations-5 li:nth-child(8) { animation-delay: 0.7s; }
+
+@keyframes lighting {
+    0% { color: #ccc; text-shadow: none; }
+    90% { color: #ccc; text-shadow: none; }
+    100% { color: turquoise; text-shadow: 0 0 7px turquoise, 0 0 50px white; }
+}
+
+.animations-6 { position: relative; width: 100px; height: 100px; background: turquoise; transform: rotate(45deg); margin: 40px auto; animation: heartbeat 1.4s linear infinite; }
+.animations-6::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: turquoise; transform: translateY(-50%); border-radius: 50%; }
+.animations-6::after { content: ""; position: absolute; top: 0; right: 0; width: 100%; height: 100%; background: turquoise; transform: translateX(-50%); border-radius: 50%; }
+
+@keyframes heartbeat {
+    0% { transform: rotate(45deg) scale(1); }
+    25% { transform: rotate(45deg) scale(1); }
+    30% { transform: rotate(45deg) scale(1.2); }
+    50% { transform: rotate(45deg) scale(1.1); }
+    70% { transform: rotate(45deg) scale(1.2); }
+    100% { transform: rotate(45deg) scale(1); }
+}
+
+.animations-7 h3 { font-size: 80px; background: url(/images/trees.jpg); background-size: cover; background-clip: text; color: transparent; animation: bgmove 20s linear infinite; }
+
+@keyframes bgmove {
+    from { background-position: 0 0; }
+    to { background-position: 100% 100%; }
+}
+
+.animations-8 { height: 200px; align-content: flex-end; }
+.animations-8 li { width: 30px; height: 30px; border-radius: 50%; animation: jumping 0.8s linear infinite; }
+.animations-8 li:nth-child(odd) { background: turquoise; }
+.animations-8 li:nth-child(even) { background: teal; }
+.animations-8 li:nth-child(1) { animation-delay: 0; }
+.animations-8 li:nth-child(2) { animation-delay: 0.1s; }
+.animations-8 li:nth-child(3) { animation-delay: 0.2s; }
+.animations-8 li:nth-child(4) { animation-delay: 0.3s; }
+.animations-8 li:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes jumping {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-150px); }
+    100% { transform: translateY(0); }
+}
+
+.animations-9 { width: 400px; height: 200px; background: url(/images/rain.png); animation: rain 0.5s linear infinite; }
+
+@keyframes rain {
+    0% { background-position: 20% 100%; }
+    100% { background-position: 0 0; }
+}
+
+.animations-10 { gap: 10px; }
+.animations-10 a { border-radius: 50%; padding: 0.5em; width: 60px; height: 60px; line-height: 60px; display: flex; justify-content: center; align-items: center; transition: 0.5s; }
+.animations-10 a::before { background: teal; content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: 0.5s; border-radius: 50%; }
+.animations-10 a::after { border: 2px dashed teal; content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: 0.5s; border-radius: 50%; box-sizing: border-box; }
+.animations-10 a:hover::before { opacity: 1; transform: scale(0.8); }
+.animations-10 a:hover::after { opacity: 1; animation: rotating 10s linear infinite; }
+.animations-10 a:hover i { z-index: 1; }
+
+@keyframes rotating {
+    0% { transform: rotate(0deg) scale(0.92); }
+    100% { transform: rotate(360deg) scale(0.92); }
+}
+
+.animations-11 li { font-size: 40px; animation: movingtext 3s linear infinite; letter-spacing: 20px; color: transparent; }
+.animations-11 li:nth-child(1) { animation-delay: 0; }
+.animations-11 li:nth-child(2) { animation-delay: 0.2s; }
+.animations-11 li:nth-child(3) { animation-delay: 0.4s; }
+.animations-11 li:nth-child(4) { animation-delay: 0.6s; }
+.animations-11 li:nth-child(5) { animation-delay: 0.8s; }
+.animations-11 li:nth-child(6) { animation-delay: 1s; }
+.animations-11 li:nth-child(7) { animation-delay: 1.2s; }
+.animations-11 li:nth-child(8) { animation-delay: 1.4s; }
+
+@keyframes movingtext {
+    0% { color: orange; transform: translateX(-50px); opacity: 0; }
+    10% { opacity: 1; }
+    50% { letter-spacing: -20px; opacity: 1; }
+    100% { color: teal; transform: translateX(50px); letter-spacing: 20px; opacity: 0; }
+}
+
+.animations-12 { margin: 40px auto; width: 100px; height: 100px; background: turquoise; color: white; border-radius: 50%; text-align: center; line-height: 100px; font-size: 40px; position: relative; }
+.animations-12::before,
+.animations-12::after { content: ""; position: absolute; left: -20px; top: -20px; right: -20px; bottom: -20px; border: 1px solid turquoise; border-radius: 50%; animation: pulsing 1.5s linear infinite; }
+.animations-12::after { animation-delay: 0.75s; }
+
+@keyframes pulsing {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.2); opacity: 0; }
+}
+
+.animations-13 { background-image: url('./images/flowers.jpg'); width: 600px; height: 300px; background-size: cover; animation: changebg 10s linear infinite; }
+
+@keyframes changebg {
+    0% { background-image: url('./images/flowers.jpg'); }
+    30% { background-image: url('./images/flowers.jpg'); }
+    33% { background-image: url('./images/ocean.jpg'); }
+    60% { background-image: url('./images/ocean.jpg'); }
+    66% { background-image: url('./images/stars.jpeg'); }
+    100% { background-image: url('./images/stars.jpeg'); }
+}
+
+.animations-14 { animation: bgcolorchange 2s linear infinite alternate; width: 100%; text-align: center; color: white; }
+.animations-14 h3 { font-size: 40px; }
+
+@keyframes bgcolorchange {
+    0% { background: #1f1f1f; }
+    20% { background: teal; }
+    40% { background: turquoise; }
+    60% { background: orange; }
+    80% { background: darkred; }
+    100% { background: #1f1f1f; }
+}
+
+.animations-15 {  }
