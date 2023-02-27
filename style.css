@@ -374,7 +374,7 @@ ul li:not(:last-child) { margin-right: 20px; }
 .navigation-11 { width: 100%; flex-direction: column; align-items: center; }
 .navigation-11 li { margin-right: 0 !important; overflow: hidden; position: relative; }
 .navigation-11 li a { overflow: visible; margin: 0; padding: 0; position: relative; display: block; color: transparent; font-size: 80px; font-weight: 900; border: none; }
-.navigation-11 li a::before { color: teal; content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; box-sizing: border-box; transition: 0.5s; clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%); transition-delay: 0.5s; }
+.navigation-11 li a::before { color: teal; content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; box-sizing: border-box; transition: 0.5s; clip-path: polygon(0 0, 100% 0, 100% 55%, 0 55%); transition-delay: 0.5s; }
 .navigation-11 li a::after { color: teal; content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; box-sizing: border-box; transition: 0.5s; clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%); transition-delay: 0.5s; }
 .navigation-11 li::before { background: darkred; content: ""; position: absolute; top: 50%; transform: translateY(-50%); left: -100%; height: 3px; width: 100%; transition: 0.5s; }
 .navigation-11 li a:hover::before { color: darkred; transform: translate(10px, -3px); }
@@ -570,7 +570,7 @@ ul li:not(:last-child) { margin-right: 20px; }
     to { transform: rotate(-5deg); }
 }
 
-.animations-2 { width: 100px; height: 100px; background: turquoise; border-radius: 20px; animation: loading 2s linear infinite; }
+.animations-2 { margin: 40px auto; width: 100px; height: 100px; background: turquoise; border-radius: 20px; animation: loading 2s linear infinite; }
 
 @keyframes loading {
     0% { transform: rotateX(0deg) rotateY(0deg); }
@@ -719,4 +719,115 @@ ul li:not(:last-child) { margin-right: 20px; }
     100% { background: #1f1f1f; }
 }
 
-.animations-15 {  }
+.animations-15 { display: flex; border-top: 3px solid turquoise; }
+.animations-15 span { position: relative; display: block; width: 3px; height: 200px; background: turquoise; margin: 0 28px; transform-origin: top; }
+.animations-15 span::before { content: ""; position: absolute; bottom: 0; left: 0; width: 60px; height: 60px; border-radius: 50%; background: turquoise; transform: translateX(-50%); }
+.animations-15 span:first-child { animation: leftarm 2s ease-in infinite; }
+.animations-15 span:last-child { animation: rightarm 2s ease-in infinite; animation-delay: 1s; }
+
+@keyframes leftarm {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(60deg); }
+    50% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes rightarm {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-60deg); }
+    50% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.animations-16 { width: 100px; height: 100px; position: relative; transform: rotate(45deg); margin: 80px auto; animation: flip 1s linear infinite; }
+.animations-16 span { position: absolute; width: 50px; height: 50px; animation: flip2 1s linear infinite; }
+.animations-16 span:nth-child(1) { top: 0; left: 0; background: teal; }
+.animations-16 span:nth-child(2) { top: 0; right: 0; background: turquoise; }
+.animations-16 span:nth-child(3) { bottom: 0; left: 0; background: turquoise; }
+.animations-16 span:nth-child(4) { bottom: 0; right: 0; background: teal; }
+
+@keyframes flip {
+    0% { width: 100px; height: 100px; }
+    10% { width: 100px; height: 100px; }
+    50% { width: 150px; height: 150px; }
+    90% { width: 100px; height: 100px; }
+    100% { width: 100px; height: 100px; }
+}
+
+@keyframes flip2 {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(0deg); }
+    50% { transform: rotate(90deg) }
+    90% { transform: rotate(90deg); }
+    100% { transform: rotate(90deg); }  
+}
+
+.animations-17 { width: 150px; height: 150px; position: relative; }
+.animations-17 span { position: absolute; width: 50px; height: 50px; background: turquoise; border-radius: 20px; animation: chase 2s linear infinite; }
+.animations-17 span:nth-child(2) { animation-delay: 0.7s; background: teal; }
+.animations-17 span:nth-child(3) { animation-delay: 1.4s; background: aqua; }
+
+@keyframes chase {
+    0% { top: 0; left: 0; }
+    12.5% { top: 0; left: 50%; }
+    25% { top: 0; left: 50%; }
+    50% { top: 50%; left: 50%; }
+    62.5% { top: 50%; left: 0; }
+    75% { top: 50%; left: 0; }
+    87.5% { top: 0; left: 0; }
+    100% { top: 0; left: 0; }
+}
+
+.animations-18 h3 { font-size: 40px; position: relative; letter-spacing: 10px; color: white; }
+.animations-18 h3::before { width: 100%; position: absolute; top: 0; left: 0; content: "BIOPARCO"; color: turquoise; overflow: hidden; border-right: 4px solid turquoise; animation: scanning 5s linear infinite; }
+
+@keyframes scanning {
+    0% { width: 0; }
+    50% { width: 100%; }
+    100% { width: 0; }
+}
+
+.animations-19 { position: relative; width: 200px; height: 200px;  }
+.animations-19 .ring { width: 100%; height: 100%; border-radius: 50%; border-right: 4px solid turquoise; animation: crescent 1s linear infinite; }
+.animations-19 .text { position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-align: center; line-height: 200px; color: turquoise; font-size: 20px; }
+
+@keyframes crescent {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.animations-20 { width: 300px; height: 3px; background: turquoise; animation: line 2s infinite alternate; }
+
+@keyframes line {
+    0% { transform: scaleX(0); transform-origin: left; }
+    45% { transform: scaleX(1); transform-origin: left; }
+    50% { transform: scaleX(1); transform-origin: right; }
+    100% { transform: scaleX(0); transform-origin: right; }
+}
+
+.animations-21 { display: flex; }
+.animations-21 .line { width: 6px; height: 40px; background: turquoise; border-radius: 20px; margin: 10px; animation: lines 0.8s linear infinite; }
+.animations-21 .line:nth-child(2) { animation-delay: 0.1s; }
+.animations-21 .line:nth-child(3) { animation-delay: 0.2s; }
+.animations-21 .line:nth-child(4) { animation-delay: 0.3s; }
+.animations-21 .line:nth-child(5) { animation-delay: 0.4s; }
+.animations-21 .line:nth-child(6) { animation-delay: 0.5s; }
+.animations-21 .line:nth-child(7) { animation-delay: 0.6s; }
+.animations-21 .line:nth-child(8) { animation-delay: 0.7s; }
+
+@keyframes lines {
+    0% { transform: scaleY(0); }
+    50% { transform: scaleY(1); }
+    100% { transform: scaleY(0); }
+}
+
+.animations-22 { position: relative; height: 200px; width: 200px; }
+.animations-22 .outer { position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 50%; border-left: 5px solid teal; border-right: 5px solid teal; border-top: 5px solid transparent; border-bottom: 5px solid transparent; animation: planes 3s linear infinite; }
+.animations-22 .middle { position: absolute; top: 30px; left: 30px; right: 30px; bottom: 30px; border-radius: 50%; border-left: 5px solid turquoise; border-right: 5px solid turquoise; border-top: 5px solid transparent; border-bottom: 5px solid transparent; animation: planes 3s linear infinite reverse; }
+.animations-22 .inner { position: absolute; top: 60px; left: 60px; right: 60px; bottom: 60px; border-radius: 50%; border-left: 5px solid aqua; border-right: 5px solid aqua; border-top: 5px solid transparent; border-bottom: 5px solid transparent; animation: planes 3s linear infinite; }
+.animations-22 .dot { position: absolute; top: 90px; left: 90px; right: 90px; bottom: 90px; border-radius: 50%; background: teal; }
+
+@keyframes planes {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
