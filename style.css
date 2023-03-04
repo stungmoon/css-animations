@@ -381,6 +381,17 @@ ul li:not(:last-child) { margin-right: 20px; }
 .navigation-11 li a:hover::after { color: darkred; transform: translate(-10px, 3px); }
 .navigation-11 li:hover::before { left: 100%; }
 
+.navigation-12 li a { display: block; position: relative; overflow: hidden; border: none; border-radius: 0; }
+.navigation-12 a::before { content: ""; position: absolute; width: 100%; height: 4px;left: -100%; top: 50%; transform: translateY(-50%); background: turquoise; transition: 0.5s; }
+.navigation-12 a:hover::before { animation: navigationline 0.5s linear forwards; }
+.navigation-12 a:hover { color: #1f1f1f; }
+
+@keyframes navigationline {
+    0% { left: -100%; height: 4px; }
+    50% { left: 0; height: 4px; }
+    100% { left: -0; height: 100%; z-index: -1; }
+}
+
 /* CARDS */
 
 .card-effect-1 { background: white; border-radius: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
@@ -484,7 +495,7 @@ ul li:not(:last-child) { margin-right: 20px; }
 .smoky li:nth-child(8) { transition-delay: 1.6s; }
 
 .fill { font-size: 50px; color: #ccc; text-transform: uppercase; position: relative; }
-.fill::before { content: "BIOPARCO"; position: absolute; top: 0; left: 0; color: teal; width: 0; overflow: hidden; transition: all 0.5s; }
+.fill::before { content: "ABCDEFGH"; position: absolute; top: 0; left: 0; color: teal; width: 0; overflow: hidden; transition: all 0.5s; }
 .fill:hover::before { width: 100%; }
 
 .borders-box { position: relative; margin: 100px auto; width: 320px; height: 320px; box-sizing: border-box; }
@@ -739,7 +750,8 @@ ul li:not(:last-child) { margin-right: 20px; }
     100% { transform: rotate(0deg); }
 }
 
-.animations-16 { width: 100px; height: 100px; position: relative; transform: rotate(45deg); margin: 80px auto; animation: flip 1s linear infinite; }
+.animations-16 { height: 300px; }
+.animations-16-wrapper { width: 100px; height: 100px; position: relative; transform: rotate(45deg); margin: 80px auto; animation: flip 1s linear infinite; }
 .animations-16 span { position: absolute; width: 50px; height: 50px; animation: flip2 1s linear infinite; }
 .animations-16 span:nth-child(1) { top: 0; left: 0; background: teal; }
 .animations-16 span:nth-child(2) { top: 0; right: 0; background: turquoise; }
@@ -779,7 +791,7 @@ ul li:not(:last-child) { margin-right: 20px; }
 }
 
 .animations-18 h3 { font-size: 40px; position: relative; letter-spacing: 10px; color: white; }
-.animations-18 h3::before { width: 100%; position: absolute; top: 0; left: 0; content: "BIOPARCO"; color: turquoise; overflow: hidden; border-right: 4px solid turquoise; animation: scanning 5s linear infinite; }
+.animations-18 h3::before { width: 100%; position: absolute; top: 0; left: 0; content: "ABCDEFGH"; color: turquoise; overflow: hidden; border-right: 4px solid turquoise; animation: scanning 5s linear infinite; }
 
 @keyframes scanning {
     0% { width: 0; }
@@ -830,4 +842,90 @@ ul li:not(:last-child) { margin-right: 20px; }
 @keyframes planes {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.animations-23 { position: relative; height: 90px; width: 90px; display: flex; flex-direction: column; flex-wrap: wrap; }
+.animations-23 span { width: 30px; height: 30px; position: relative; }
+.animations-23 span::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; animation: boxes 1s linear infinite; background: turquoise; }
+.animations-23 span:nth-child(4)::before,
+.animations-23 span:nth-child(5)::before,
+.animations-23 span:nth-child(6)::before { animation-delay: 0.1s; }
+.animations-23 span:nth-child(7)::before,
+.animations-23 span:nth-child(8)::before,
+.animations-23 span:nth-child(9)::before { animation-delay: 0.2s; }
+
+@keyframes boxes {
+    0% { width: 100%; height: 100%; }
+    100% { width: 0; height: 0; }
+}
+
+.animations-24 { width: 70px; display: flex; }
+.animations-24 span { width: 10px; height: 60px; margin: 0px 1px; animation: loadinglines 0.8s ease-in-out infinite; }
+.animations-24 span:nth-child(1) { animation-delay: 0.2s; background: turquoise; }
+.animations-24 span:nth-child(2) { animation-delay: 0.3s; background: teal; }
+.animations-24 span:nth-child(3) { animation-delay: 0.4s; background: turquoise; }
+.animations-24 span:nth-child(4) { animation-delay: 0.5s; background: teal; }
+.animations-24 span:nth-child(5) { animation-delay: 0.6s; background: turquoise; }
+.animations-24 span:nth-child(6) { animation-delay: 0.7s; background: teal; }
+
+@keyframes loadinglines {
+    0% { transform: scaleY(0.1); }
+    35% { transform: scaleY(1); }
+    60%,
+    100% { transform: scaleY(0.1); }
+}
+
+.animations-25 { position: relative; width: 500px; height: 500px; overflow: hidden; }
+.animations-25 .text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: turquoise; font-size: 45px; border-top: 5px solid turquoise; border-bottom: 5px solid turquoise; }
+.animations-25 .square { position: absolute; bottom: -100px; background: rgba(64, 225, 208, 0.5); animation: bgboxes 10s infinite ease-in-out; }
+.animations-25 .square:nth-child(1) { height: 50px; width: 50px; left: 7%; animation-delay: 2s; background: turquoise; }
+.animations-25 .square:nth-child(2) { height: 50px; width: 50px; left: 17%; animation-delay: 8s; }    
+.animations-25 .square:nth-child(3) { height: 50px; width: 50px; left: 27%; animation-delay: 7s; }
+.animations-25 .square:nth-child(4) { height: 50px; width: 50px; left: 37%; animation-delay: 6s; }
+.animations-25 .square:nth-child(5) { height: 50px; width: 50px; left: 47%; animation-delay: 3s; }
+.animations-25 .square:nth-child(6) { height: 50px; width: 50px; left: 57%; animation-delay: 9s; }
+.animations-25 .square:nth-child(7) { height: 50px; width: 50px; left: 67%; animation-delay: 1s; }    
+.animations-25 .square:nth-child(8) { height: 50px; width: 50px; left: 77%; animation-delay: 4s; }
+.animations-25 .square:nth-child(9) { height: 50px; width: 50px; left: 87%; animation-delay: 10s; }
+.animations-25 .square:nth-child(10) { height: 50px; width: 50px; left: 97%; animation-delay: 5s; }
+
+@keyframes bgboxes {
+    0% { bottom: -100px; }
+    100% { bottom: 100%; transform: rotate(180deg); opacity: 0; }
+}
+
+.animations-26 { padding: 50px 0; width: 300px; border-bottom: 4px solid teal; position: relative; animation: line 6s linear infinite; }
+.animations-26 div { position: absolute; left: 0; bottom: 14px; width: 50px; height: 30px; background: turquoise; animation: hexagon 6s linear infinite; }
+.animations-26 div::before,
+.animations-26 div::after { content: ""; position: absolute; left: 0; bottom: 0; width: 50px; height: 30px; background: turquoise; }
+.animations-26 div::before { transform: rotate(60deg); }
+.animations-26 div::after { transform: rotate(120deg); }
+
+@keyframes hexagon {
+    0% { left: 0; }
+    50% { left: calc(100% - 50px); transform: rotate(720deg); }
+    100% { left: 0; }
+}
+
+@keyframes line {
+    0% { transform: rotate(30deg); }
+    25% { transform: rotate(0); }
+    50% { transform: rotate(-30deg); }
+    75% { transform: rotate(0); }
+    100% { transform: rotate(30deg); }
+}
+
+.animations-27 { position: relative; width: 500px; height: 500px; overflow: hidden; }
+.animations-27 h3 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: turquoise; font-size: 45px; z-index: 1; }
+.animations-27 .square { position: absolute; top: 80%; left: 45%; width: 30px; height: 30px; border: 1px solid turquoise; background: rgba(64, 227, 208, 0.5); animation: moreboxes 12s infinite ease-in; transform: scale(0); }
+.animations-27 .square:nth-child(1) { height: 50px; width: 50px; left: 7%; background: turquoise; }
+.animations-27 .square:nth-child(2) { top: 40%; left: 25%; animation-delay: 2s; }    
+.animations-27 .square:nth-child(3) { top: 50%; left: 75%; animation-delay: 4s; }
+.animations-27 .square:nth-child(4) { top: 10%; left: 90%; animation-delay: 7s; }
+.animations-27 .square:nth-child(5) { top: 85%; left: 10%; animation-delay: 8s; }
+.animations-27 .square:nth-child(6) { top: 10%; left: 50%; animation-delay: 6s; }
+
+@keyframes moreboxes {
+    0% { transform: scale(0) rotate(0); opacity: 1; }
+    100% { transform: scale(20) rotate(960deg); opacity: 0; }
 }
